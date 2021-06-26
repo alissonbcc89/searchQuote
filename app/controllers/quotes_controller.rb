@@ -21,6 +21,11 @@ class QuotesController < ApplicationController
 
   # POST /quotes or /quotes.json
   def create
+   
+    if (Quote.self.any?)
+      redirect_to :show
+    end
+
     @quote = Quote.new(quote_params)
 
     respond_to do |format|
